@@ -1,6 +1,8 @@
 from django.test import TestCase
 from store.models import Category, Product, User
 
+# py manage.py test
+
 class TestCategoriesModel(TestCase):
     '''
     Create a separate testing database
