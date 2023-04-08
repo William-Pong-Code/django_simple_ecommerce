@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls', namespace='store'))      # namespace: useful when having multiple applications
+    path('', include('store.urls', namespace='store')),      # namespace: useful when having multiple applications
+    path('basket/', include('basket.urls', namespace='basket'))      # namespace: useful when having multiple applications
 ]
 
 if settings.DEBUG:
