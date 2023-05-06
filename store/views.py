@@ -3,7 +3,7 @@ from .models import Category, Product
 
 # Create your views here.
 def product_all(request):
-    products = Product.products.all()
+    products = Product.products.all()                                                                       # only return objects with is_active=True, see models.py
     return render(request, 'store/home.html', {'products': products})
 
 

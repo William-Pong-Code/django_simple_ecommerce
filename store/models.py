@@ -7,18 +7,18 @@ from django.urls import reverse
 
 class ProductManager(models.Manager):
     def get_queryset(self):
-        return super(ProductManager, self).get_queryset().filter(is_active=True)
+        return super(ProductManager, self).get_queryset().filter(is_active=True)                                # only return the objects with is_active=True
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, db_index=True)                                                      # db_index=True => improve perforamce as it is frequently queried
+    name = models.CharField(max_length=255, db_index=True)                                                      # db_index=True => improve performance as it is frequently queried
     slug = models.SlugField(max_length=255, unique=True)
 
     class Meta:
         verbose_name_plural = 'categories'
 
     def get_absolute_url(self):
-        return reverse('store:category_list', args=[self.slug])
+        return reverse('store:category_list', args=[self.slug])                                                 # reverse => redirect to the url with parameters
 
     def __str__(self):
         return self.name
@@ -37,15 +37,15 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    objects = models.Manager()
-    products = ProductManager()
+    objects = models.Manager()                                                                                  # overwite the default objects function
+    products = ProductManager()                                                                                 # all() function will also go to ProductManager()
 
     class Meta:
         verbose_name_plural = 'Products'
         ordering = ('-created',)
 
     def get_absolute_url(self):
-        return reverse('store:product_detail', args=[self.slug])
+        return reverse('store:product_detail', args=[self.slug])                                                # reverse => redirect to the url with parameters
 
     def __str__(self):
         return self.title
