@@ -11,7 +11,7 @@ class Basket():
 
     def __init__(self, request):
         self.session = request.session
-        basket = self.session.get('skey')
+        basket = self.session.get('skey')                                                   # set a key in request.session
         if 'skey' not in request.session:
             basket = self.session['skey'] = {}
         self.basket = basket
@@ -27,7 +27,7 @@ class Basket():
         else:
             self.basket[product_id] = {'price': str(product.price), 'qty': qty}
 
-        self.save()
+        self.save()                                                                         # call save method after session modified
 
     def __iter__(self):
         """
@@ -39,11 +39,11 @@ class Basket():
         basket = self.basket.copy()
 
         for product in products:
-            basket[str(product.id)]['product'] = product
+            basket[str(product.id)]['product'] = product                                    # add product in basket
 
         for item in basket.values():
-            item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price'] * item['qty']
+            item['price'] = Decimal(item['price'])                                          # convert type
+            item['total_price'] = item['price'] * item['qty']                               # add total_price in dict
             print(item)
             yield item                                                                      # return items to summary.html
         
@@ -62,7 +62,7 @@ class Basket():
         product_id = str(product)
         if product_id in self.basket:
             self.basket[product_id]['qty'] = qty
-        self.save()
+        self.save()                                                                         # call save method after session modified
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
@@ -75,7 +75,7 @@ class Basket():
 
         if product_id in self.basket:
             del self.basket[product_id]
-            self.save()
+            self.save()                                                                     # call save method after session modified
 
     def save(self):
         self.session.modified = True

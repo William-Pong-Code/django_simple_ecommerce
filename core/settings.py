@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^wm)zgl_x8#9r^cwr9m1%+#ns@3o+a8!s+0@*d&1w&1x17dwsb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
-    'basket'
+    'basket',
+    'account',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,20 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Basket session ID
+# BASKET_SESSION_ID = 'basket'
+
+# # Stripe Payment
+# # PUBLISHABLE_KEY = ''
+# # SECRET_KEY = ''
+# # STRIPE_ENDPOINT_SECRET = ''
+# # stripe listen --forward-to localhost:8000/payment/webhook/
+
+# # Custom user model
+AUTH_USER_MODEL = 'account.UserBase'                                    # we have overridden the user model, database may be needed to delete and re-create again
+LOGIN_REDIRECT_URL = '/account/dashboard'
+LOGIN_URL = '/account/login/'
+
+# # Email setting
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

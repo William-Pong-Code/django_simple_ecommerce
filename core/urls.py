@@ -21,9 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls', namespace='store')),              # namespace: useful when having multiple applications
-    path('basket/', include('basket.urls', namespace='basket'))      # namespace: useful when having multiple applications
+    path('', include('store.urls', namespace='store')),                             # namespace: useful when having multiple applications
+    path('basket/', include('basket.urls', namespace='basket')),
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('account/', include('account.urls', namespace='account')),
+    path('orders/', include('orders.urls', namespace='orders')),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    # show media
