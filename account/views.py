@@ -24,10 +24,16 @@ def dashboard(request):
 
 @login_required
 def edit_details(request):
+    """
+    If request.method == 'POST' => save the form
+    Else render the Edit form
+    """
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         if user_form.is_valid():
             user_form.save()
+        else:
+            print(user_form.errors.as_data())                                           # here you print errors to terminal
     else:
         user_form = UserEditForm(instance=request.user)
 
@@ -37,6 +43,10 @@ def edit_details(request):
 
 @login_required
 def delete_user(request):
+    """
+    The user will still be stored in database.
+    Only the status of the user is changed to inactive.
+    """
     user = UserBase.objects.get(user_name=request.user)
     user.is_active = False
     user.save()

@@ -133,7 +133,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Basket session ID
-# BASKET_SESSION_ID = 'basket'
+BASKET_SESSION_ID = 'basket'
 
 # # Stripe Payment
 # # PUBLISHABLE_KEY = ''
@@ -147,4 +147,4 @@ LOGIN_REDIRECT_URL = '/account/dashboard'
 LOGIN_URL = '/account/login/'
 
 # # Email setting
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -4,7 +4,7 @@ from .models import UserBase
 
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(
+    username = forms.CharField(widget=forms.TextInput(                                                                  # using widget to add attributes in the frontend
         attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'login-username'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
@@ -84,9 +84,9 @@ class UserEditForm(forms.ModelForm):
         label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
 
-    user_name = forms.CharField(
-        label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
+    # user_name = forms.CharField(
+    #     label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
+    #         attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
 
     first_name = forms.CharField(
         label='Username', min_length=4, max_length=50, widget=forms.TextInput(
@@ -94,9 +94,9 @@ class UserEditForm(forms.ModelForm):
 
     class Meta:
         model = UserBase
-        fields = ('email', 'user_name', 'first_name',)
+        fields = ('email', 'first_name',)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):                                                                    # validation checking before submitting the form
         super().__init__(*args, **kwargs)
-        self.fields['user_name'].required = True
-        self.fields['email'].required = True
+        # self.fields['user_name'].required = True
+        self.fields['first_name'].required = True
