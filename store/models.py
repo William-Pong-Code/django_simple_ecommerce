@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+
+
 class ProductManager(models.Manager):
     def get_queryset(self):
         return super(ProductManager, self).get_queryset().filter(is_active=True)                                                    # only return the objects with is_active=True

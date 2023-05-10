@@ -10,6 +10,7 @@ class CustomAccountManager(BaseUserManager):
     custom account manager class called CustomAccountManager.
     This class extends the BaseUserManager class, it is a custom manager for user accounts.
     """
+
     def create_superuser(self, email, user_name, password, **other_fields):
         """
         for superuser account
@@ -63,7 +64,8 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()                                                    # allows the custom manager to be used for managing user accounts.
 
     USERNAME_FIELD = 'email'                                                            # specifies the field used as the unique identifier for the user model, which is the email field in this case
-    REQUIRED_FIELDS = ['user_name']                                                     # lists the additional fields that are required when creating a user account. In this case, the user_name field is required
+    # lists the additional fields that are required when creating a user account. In this case, the user_name field is required
+    REQUIRED_FIELDS = ['user_name']
 
     class Meta:
         verbose_name = "Accounts"

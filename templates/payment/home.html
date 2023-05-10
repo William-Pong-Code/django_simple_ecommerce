@@ -4,8 +4,7 @@
 {% block content %}
 
 <style>
-  .account-form input
-  {
+  .account-form input {
     border: 2px solid #ccc;
     height: calc(2em + .75rem + 2px);
   }
@@ -54,8 +53,7 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <label for="address2" class="form-label">Address 2 <span
-                        class="text-muted">(Optional)</span></label>
+                    <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
                     <input type="text" class="form-control" id="custAdd2" placeholder="Apartment or suite">
                   </div>
                   <div class="col-md-5">
@@ -105,8 +103,8 @@
 
 
 <script>
-    // {% comment %} Make csrf token availble in JS files {% endcomment %}
-    var CSRF_TOKEN = '{{ csrf_token }}';
+  // {% comment %} Make csrf token availble in JS files {% endcomment %}
+  var CSRF_TOKEN = '{{ csrf_token }}';
 </script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'payment/index.js' %}" data-rel-js></script>

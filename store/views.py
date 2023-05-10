@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 
 # Create your views here.
+
+
 def product_all(request):
     products = Product.products.all()                                                                       # only return objects with is_active=True, see models.py
     return render(request, 'store/home.html', {'products': products})
